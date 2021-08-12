@@ -1,3 +1,6 @@
+// ============================================================================
+// Pokemon Service llama a ApiService y ApiUtils para llamar a pokeapi
+// ============================================================================
 import ApiService from './ApiService';
 
 export const getPokemon = async () => {

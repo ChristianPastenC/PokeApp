@@ -1,7 +1,12 @@
+// ============================================================================
+// ApiService.js utiliza métodos http para llamar a la API
+// ============================================================================
 import axios from 'axios'; 
 import { handleResponse } from './ApiUtils';
 
-//Se crea una solicitud http
+// ============================================================================
+// Se crea una solicitud http
+// ============================================================================
 const httpRequest = (method, url, request, headers) => {
   return axios({
     method,
@@ -16,7 +21,9 @@ const httpRequest = (method, url, request, headers) => {
     .catch((err) => {   return err; });
 };
 
-//Obtiene la respuesta del servidor
+// ============================================================================
+// Obtiene la respuesta del servidor
+// ============================================================================
 const get = (url, request, headers) => {
   let queryString = '';
   if (request && Object.keys(request).length > 0) {

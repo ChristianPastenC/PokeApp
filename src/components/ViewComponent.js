@@ -1,3 +1,8 @@
+// ============================================================================
+// Componente que muestra un grid de cards de material UI
+// con la foto y nombre de 10 pokemon
+// guarda 20 resultados para hacer un cambio de vista
+// ============================================================================
 import React from "react";
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -8,6 +13,7 @@ import '../pokemon.css';
 
 function Pokedex({ pokemons, actPokemon }) {
 
+  // Dibuja los cards de pokemon encontrados
   const drawPokemon = () => {
     return pokemons.map((p, id) => (
     <Card key = {id} onClick = {() => actPokemon(p.id)} className = 'card'>
@@ -27,6 +33,7 @@ function Pokedex({ pokemons, actPokemon }) {
     ));
   };
 
+  // Llama a la función de dibujo y los introduce en un div container
   return <div className = 'pokedex'>
             {pokemons.length > 0 && drawPokemon()}
           </div>;

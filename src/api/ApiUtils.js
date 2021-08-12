@@ -1,4 +1,10 @@
-//Funciones que se encargan de la respuesta del server
+// ============================================================================
+// ApiUtils se encarga del manejo de respuestas del server
+// ============================================================================
+
+// ============================================================================
+// Funciones que se encargan de la respuesta del server
+// ============================================================================
 export function handleResponse(response) {
     if(
         response.status === 200 ||  response.statusText === 'OK'    ||

@@ -1,3 +1,8 @@
+// ============================================================================
+// Componente que muestra los detalles de un item especifico
+// muestra un card de material UI con la imagen, nombre y
+// otros datos 
+// ============================================================================
 import React, { Component } from "react";
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -7,7 +12,6 @@ import Typography from '@material-ui/core/Typography';
 import '../pokemon.css';
 
 function PokeItem({ pokemon }) {
-  console.log(pokemon);
   return (
     <Card className = 'cardSelected'>
       <CardActionArea>

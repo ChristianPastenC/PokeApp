@@ -1,3 +1,8 @@
+// ============================================================================
+// Funciona como router principal de la aplicación
+// llama al componente home que incluye los otros
+// dos componentes de funciones principales
+// ============================================================================
 import './App.css';
 import HomeComponent from '../components/HomeComponent';
 

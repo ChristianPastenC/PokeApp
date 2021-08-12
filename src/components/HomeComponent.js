@@ -2,72 +2,47 @@ import React, { useEffect, useState } from "react";
 import PokemonList from "./ViewComponent";
 import PokemonDetail from "./DetailsComponent";
 import { getPokemonData } from '../api/PokemonService';
+import Button from '@material-ui/core/Button';
+import '../pokemon.css';
 
 function HomeComponent() {
-    useEffect(async () => {
-        try {
-          let pokemons = await getPokemonData();
-          console.log(pokemons);
-          setFilteredPokeList(pokemons);
-          setPokeList(pokemons);
-        } catch (err) {
-          alert("an error occurs");
-          console.error(err);
-        }
-      }, []);
-    
-      const [pokeList, setPokeList] = useState([]);
-      const [filteredPokeList, setFilteredPokeList] = useState([]);
-      const [pokemonSelected, setPokemonSelected] = useState(null);
-      const [filter, setFilter] = useState("");
-    
-      const handleSelect = (pokemonId) => {
-        setPokemonSelected(pokeList.filter((p) => p.id === pokemonId)[0]);
-        setFilteredPokeList(
-          filteredPokeList.map((p) =>
-            p.id === pokemonId
-              ? { ...p, selected: true }
-              : { ...p, selected: false }
-          )
-        );
-      };
-    
-      const filterPokemon = (value) => {
-        setFilter(value);
-        setFilteredPokeList(
-          pokeList.filter((p) => p.name.toLowerCase().includes(value.toLowerCase()))
-        );
-      };
-      return (
-        <div className="row pokemon-app-container">
-          <div className="col-6">
-            {pokemonSelected && <PokemonDetail pokemon={pokemonSelected} />}
-          </div>
-          <div className="col-6 pokemon-list-container">
-            <div style={{ height: "10%" }}>
-              <div className="form-group">
-                <label>Search</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Type to search a pokemon..."
-                  value={filter}
-                  onChange={(event) => {
-                    let { value } = event.target;
-                    filterPokemon(value);
-                  }}
-                />
-              </div>
-            </div>
-            <div style={{ height: "90%", overflowY: "auto" }}>
-              <PokemonList
-                pokemons={filteredPokeList}
-                actPokemon={handleSelect}
-              />
-            </div>
-          </div>
-        </div>
-      );
-}
+  useEffect(async () => {
+    try {
+      let pokemons = await getPokemonData(), auxPokemon = pokemons.slice(0,10);
+      setPokeList(auxPokemon);
+    } catch (err) {
+      alert("Error");
+    }
+  }, []);
 
+  const [pokeList, setPokeList] = useState([]);
+  const [pokemonSelected, setPokemonSelected] = useState(null);
+
+  const handleSelect = (pokemonId) => {
+    setPokemonSelected(pokeList.filter((p) => p.id === pokemonId)[0]); 
+  };
+
+  return (
+    <div className = 'mainContainer'>
+      <div className = 'selected'>
+        {pokemonSelected && <PokemonDetail pokemon={pokemonSelected} />}
+      </div>
+      <div className = 'list'>
+        <PokemonList
+          pokemons = {pokeList}
+          actPokemon = {handleSelect}
+        />
+        <br></br>
+        <Button variant="contained" color="secondary" onClick = {async () => {
+          let pokemons = await getPokemonData(), auxPokemon = pokemons.slice(0,10);
+          setPokeList(auxPokemon);
+        }}>Anterior</Button>
+        <Button variant="contained" color="secondary" onClick = {async () => {
+          let pokemons = await getPokemonData(), auxPokemon = pokemons.slice(10,20);
+          setPokeList(auxPokemon);
+        }}>Siguiente</Button>
+      </div>
+    </div>
+  );    
+}
 export default HomeComponent;

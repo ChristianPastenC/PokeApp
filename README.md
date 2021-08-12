@@ -21,3 +21,8 @@ Para iniciar el proyecto introducimos el comando en una terminal
 ### npm start
 
 Desplegará nuestro browser predefinido en el puero 3000 por defecto (http://localhost:3000).
+
+# Github pages
+
+Para una mejor visualización del resultado, el ejercicio fue desplegado con ayuda de github pages, puede ser consultado en:
+https://ChristianPastenC.github.io/PokeApp/index.html

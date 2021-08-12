@@ -1,10 +1,10 @@
 import './App.css';
-import axios from 'axios';
+import HomeComponent from '../components/HomeComponent';
 
 const App = () => {
   return (
     <div className="App">
-      Pokédex
+      <HomeComponent></HomeComponent>
     </div>
   );
 }
